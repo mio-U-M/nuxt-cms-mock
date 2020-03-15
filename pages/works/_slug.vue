@@ -8,9 +8,23 @@ main.pages
 </template>
 
 <script>
+import client from '~/plugins/contentful.js'
+
 export default {
-  components: {},
-  methods: {}
+  asyncData({ env, params }) {
+    return client
+      .getEntry(params.id)
+      .then((entrie) => {
+        return {
+          article: entrie
+        }
+      })
+      .catch(console.error)
+  },
+  mounted() {
+    console.log(this.$route.params)
+    console.log(this.article)
+  }
 }
 </script>
 
