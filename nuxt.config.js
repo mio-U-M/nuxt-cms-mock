@@ -1,15 +1,6 @@
 import { META, BASE_DIR } from './config'
-import CONTENTFUL from './contentful'
 
-const env = {
-  CTF_SPACE_ID: CONTENTFUL ? CONTENTFUL.CTF_SPACE_ID : process.env.CTF_SPACE_ID,
-  CTF_CDA_ACCESS_TOKEN: CONTENTFUL
-    ? CONTENTFUL.CTF_CDA_ACCESS_TOKEN
-    : process.env.CTF_CDA_ACCESS_TOKEN,
-  CTF_BLOG_POST_TYPE_ID: CONTENTFUL
-    ? CONTENTFUL.CTF_BLOG_POST_TYPE_ID
-    : process.env.CTF_BLOG_POST_TYPE_ID
-}
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -19,9 +10,9 @@ export default {
   head: META,
 
   env: {
-    CTF_SPACE_ID: env.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: env.CTF_CDA_ACCESS_TOKEN,
-    CTF_BLOG_POST_TYPE_ID: env.CTF_BLOG_POST_TYPE_ID
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID
   },
   /*
    ** Customize the progress-bar color
@@ -60,7 +51,8 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/dotenv'
   ],
   eslint: {
     fix: true
