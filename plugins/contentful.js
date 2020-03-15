@@ -8,9 +8,6 @@ const config = {
   accessToken: process.env.CTF_CDA_ACCESS_TOKEN
 }
 
-// export `createClient` to use it in page components
-module.exports = {
-  createClient() {
-    return contentful.createClient(config)
-  }
-}
+const client = contentful.createClient(config)
+
+export default client
