@@ -1,9 +1,10 @@
 <template lang="pug">
-  .container
-    p this is list page for works
+main.work
+  section.container
+    h1 this is list page for works
     ul.list
-      template(v-for='n in 3')
-        li.list-item: nuxt-link(:to='/works/+ n') page {{ n }}
+      template(v-for='item in posts')
+        li.list-item: nuxt-link(:to='/works/+ item.fields.slug') {{ item.fields.title }}
 </template>
 
 <script>
@@ -12,8 +13,8 @@ import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
-  async asyncData({ env, params }) {
-    return await client
+  asyncData({ env, params }) {
+    return client
       .getEntries({
         content_type: env.CTF_BLOG_POST_TYPE_ID
       })
@@ -23,22 +24,32 @@ export default {
         }
       })
       .catch(console.error)
-  },
-  mounted() {
-    console.log(this.posts)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/scss/base';
-
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+.work {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  min-height: 100vh;
+  height: 100%;
+  margin: auto;
+
+  .container {
+    text-align: center;
+  }
+
+  .list {
+    margin-top: 30px;
+  }
+
+  .list-item {
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #333;
+  }
 }
 </style>

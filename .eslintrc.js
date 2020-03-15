@@ -24,7 +24,6 @@ module.exports = {
     'new-cap': 'warn',
     'no-console': 'warn',
     'no-unused-vars': 'warn',
-    'no-undef': 'warn',
-    'no-return-await': 'warn'
+    'no-undef': 'warn'
   }
 }
