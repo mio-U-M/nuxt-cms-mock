@@ -4,7 +4,7 @@ main.work
     h1 this is list page for works
     ul.list
       template(v-for='item in posts')
-        li.list-item: nuxt-link(:to="{name: 'works-slug', path: `/works/${item.fields.slug}`, params: { id: item.sys.id }}") {{ item.fields.title }}
+        li.list-item: nuxt-link(:to='/works/+ item.fields.slug') {{ item.fields.title }}
 </template>
 
 <script>
