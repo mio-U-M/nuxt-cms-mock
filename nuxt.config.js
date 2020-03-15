@@ -1,4 +1,5 @@
 import { META, BASE_DIR } from './config'
+import CONTENTFUL from './contentful'
 
 export default {
   mode: 'universal',
@@ -6,6 +7,12 @@ export default {
    ** Headers of the page
    */
   head: META,
+
+  env: {
+    CTF_SPACE_ID: CONTENTFUL.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: CONTENTFUL.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: CONTENTFUL.CTF_BLOG_POST_TYPE_ID
+  },
   /*
    ** Customize the progress-bar color
    */
