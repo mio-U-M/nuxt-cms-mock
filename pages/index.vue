@@ -5,8 +5,7 @@
       h1.title nuxt-startar
       h2.subtitl Nuxt.js startar for web project
       .links
-        a(href="https://nuxtjs.org/" target="_blank").button--green Documentation
-        a(href="https://github.com/nuxt/nuxt.js" target="_blank").button--grey GitHub
+        nuxt-link(to='/works/').button--green Works
       .modal
        button(@click='openModal').button--blue Open Modal
     Modal
